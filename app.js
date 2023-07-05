@@ -67,8 +67,3 @@ app.listen( 3000 || process.env.PORT,function(){  //process.env.PORT is for hero
     console.log("listening on port 3000");        // and 3000 is for development locally
 })
 
-//api key
-// 52136185e98d8cf3d427863ce6413568-us21
-
-//list_id
-// 39f7a421af
