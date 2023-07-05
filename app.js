@@ -1,0 +1,74 @@
+const express=require("express");
+const bodyParser=require("body-parser");
+const request = require("request");
+const https = require("https");
+const app=express();
+require('dotenv').config();
+
+// console.log(process.env);
+const api=process.env.API_KEY;
+
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true}));
+
+
+app.get("/",function(req,res){
+    res.sendFile(__dirname+"/signup.html");
+})
+
+app.post("/",function(req,res){
+    const firstName=req.body.First;
+    const lastName=req.body.Last;
+    const email=req.body.Mail;
+    
+    var data={
+        members:[
+            {
+                email_address : email,
+                status: "subscribed",
+                merge_fields:{
+                    FNAME: firstName,
+                    LNAME: lastName
+                }
+            }
+        ]
+    }
+
+    const jsonData = JSON.stringify(data); 
+
+    const url = "https://us21.api.mailchimp.com/3.0/lists/39f7a421af"; 
+    
+    
+    const options={
+        method: "POST",
+        auth:"navneet:"+api
+    }
+
+    const request = https.request(url,options,function(response){
+        response.on("data",function(data){
+            console.log(JSON.parse(data));
+        })
+        if(response.statusCode==200){
+            res.sendFile(__dirname+"/success.html");
+        }
+        else {
+            res.sendFile(__dirname+"/failure.html");
+        }
+    })
+
+    request.write(jsonData);
+    request.end();
+})
+
+app.post("/failure",function(req,res){
+    res.redirect("/");
+})
+app.listen( 3000 || process.env.PORT,function(){  //process.env.PORT is for heroku to dynamically allocate server port 
+    console.log("listening on port 3000");        // and 3000 is for development locally
+})
+
+//api key
+// 52136185e98d8cf3d427863ce6413568-us21
+
+//list_id
+// 39f7a421af

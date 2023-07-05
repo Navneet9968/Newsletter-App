@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Failure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body class="outer-box">
+    
+
+    <div class="container ">
+        <h1 class="display-2 inner-box">
+            Failure &#128553;
+        </h1>
+        <p class="text-bg-light p-3 display-6 inner-box" >Kindly check details and try again.</p>
+      </div>
+      <div class="submitButton">
+        <form action="/failure" method="post">
+            <button type="submit" class="btn btn-primary">Try Again</button>
+        </form>
+      </div>
+      <!-- ////////////////////////////////////////////css Style///////////////////////////////////// -->
+    <style>
+        h1{
+            width: 100%;
+            padding: 5%;
+            background-color: grey;
+            font-weight: bolder;
+        }
+        .outer-box{
+            /* width: 100vw; */
+            height: 100vh;
+            background-color: #0093E9;
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+        }
+        .inner-box{
+        width: 50%;
+        margin: 20px auto;
+        /* position: relative; */
+        /* top: 45%; */
+        /* transform: translateY(-60%); */
+        padding: 20px 40px ;
+        background-color: #ffffff09;
+        background: linear-gradient(to top right , #ffffffff,#ffffff45);
+        backdrop-filter: blur(8px);
+        border-radius: 16px;
+        box-shadow: 2px 2px 5px #2773a5;
+        z-index: 2;
+        
+        }
+        .submitButton{
+            margin-left: 45%;
+        }
+    </style>
+    
+</body>
+</html>
